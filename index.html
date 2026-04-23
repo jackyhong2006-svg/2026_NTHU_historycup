@@ -259,93 +259,117 @@
   </div>
 
   <div class="bracket">
-    <svg viewBox="0 -14 680 244" preserveAspectRatio="xMidYMid meet">
+    <!--
+      正確賽制（參考 PPTX 賽制圖）：
+      10強01：A組第四 vs g籤  → 勝者進 8強01
+      10強02：A組第三 vs h籤  → 勝者進 8強02
+      8強01：10強01勝 vs a籤
+      8強02：10強02勝 vs d籤   （左半區 → 4強01）
+      8強03：b籤 vs e籤
+      8強04：c籤 vs f籤         （右半區 → 4強02）
+    -->
+    <svg viewBox="0 -14 720 260" preserveAspectRatio="xMidYMid meet">
       <!-- Round labels -->
-      <text x="40"  y="-2" class="rlabel">10 強</text>
-      <text x="180" y="-2" class="rlabel">8 強</text>
-      <text x="330" y="-2" class="rlabel">4 強</text>
-      <text x="490" y="-2" class="rlabel">冠 / 季軍</text>
+      <text x="8"   y="-2" class="rlabel">10 強</text>
+      <text x="168" y="-2" class="rlabel">8 強</text>
+      <text x="368" y="-2" class="rlabel">4 強</text>
+      <text x="528" y="-2" class="rlabel">冠 / 季軍</text>
 
-      <!-- 10強 (2 matches) -->
-      <g class="m" data-x="10">
-        <rect class="match" x="10" y="30" width="130" height="36" rx="2"/>
-        <text x="16" y="42" class="match-code">預01 · 10強01</text>
-        <text x="16" y="55" class="match-team ph">A 組第四 (g)</text>
-        <text x="16" y="65" class="match-team ph">A 組第三 (h)</text>
-      </g>
-      <g class="m" data-x="10">
-        <rect class="match" x="10" y="160" width="130" height="36" rx="2"/>
-        <text x="16" y="172" class="match-code">預02 · 10強02</text>
-        <text x="16" y="185" class="match-team ph">A 組第四 vs</text>
-        <text x="16" y="195" class="match-team ph">A 組第三</text>
-      </g>
-
-      <!-- 8強 (4 matches) -->
+      <!-- ── 10強 (2 matches) ── -->
+      <!-- 10強01：A組第四 vs g -->
       <g>
-        <rect class="match" x="160" y="10"  width="140" height="36" rx="2"/>
-        <text x="166" y="22" class="match-code">8強01 · a vs d</text>
-        <text x="166" y="35" class="match-team ph">a　— B 組冠</text>
-        <text x="166" y="45" class="match-team ph">d　— C 組亞</text>
+        <rect class="match" x="8" y="14" width="138" height="36" rx="2"/>
+        <text x="14" y="26" class="match-code">10強01</text>
+        <text x="14" y="39" class="match-team ph">A 組第四</text>
+        <text x="14" y="49" class="match-team ph">g 籤（B/C組三抽）</text>
       </g>
+      <!-- 10強02：A組第三 vs h -->
       <g>
-        <rect class="match" x="160" y="60"  width="140" height="36" rx="2"/>
-        <text x="166" y="72" class="match-code">8強02 · b vs e</text>
-        <text x="166" y="85" class="match-team ph">b　— A 組冠</text>
-        <text x="166" y="95" class="match-team ph">e　— C 組冠</text>
-      </g>
-      <g>
-        <rect class="match" x="160" y="120" width="140" height="36" rx="2"/>
-        <text x="166" y="132" class="match-code">8強03 · c vs f</text>
-        <text x="166" y="145" class="match-team ph">c　— B 組亞</text>
-        <text x="166" y="155" class="match-team ph">f　— A 組亞</text>
-      </g>
-      <g>
-        <rect class="match" x="160" y="180" width="140" height="36" rx="2"/>
-        <text x="166" y="192" class="match-code">8強04</text>
-        <text x="166" y="205" class="match-team ph">10強01 勝</text>
-        <text x="166" y="215" class="match-team ph">10強02 勝</text>
+        <rect class="match" x="8" y="68" width="138" height="36" rx="2"/>
+        <text x="14" y="80" class="match-code">10強02</text>
+        <text x="14" y="93" class="match-team ph">A 組第三</text>
+        <text x="14" y="103" class="match-team ph">h 籤（B/C組三抽）</text>
       </g>
 
-      <!-- connectors 10強 → 8強04 -->
-      <path class="line" d="M140 48 L150 48 L150 196 L160 196"/>
-      <path class="line" d="M140 178 L150 178 L150 196 L160 196"/>
+      <!-- ── 8強 (4 matches) ── -->
+      <!-- 左半區 -->
+      <!-- 8強01：10強01勝 vs a -->
+      <g>
+        <rect class="match" x="166" y="4"  width="146" height="36" rx="2"/>
+        <text x="172" y="16" class="match-code">8強01</text>
+        <text x="172" y="29" class="match-team ph">10強01 勝</text>
+        <text x="172" y="39" class="match-team ph">a 籤（分組一抽）</text>
+      </g>
+      <!-- 8強02：10強02勝 vs d -->
+      <g>
+        <rect class="match" x="166" y="58" width="146" height="36" rx="2"/>
+        <text x="172" y="70" class="match-code">8強02</text>
+        <text x="172" y="83" class="match-team ph">10強02 勝</text>
+        <text x="172" y="93" class="match-team ph">d 籤（籤分組二抽）</text>
+      </g>
+      <!-- 右半區 -->
+      <!-- 8強03：b vs e -->
+      <g>
+        <rect class="match" x="166" y="128" width="146" height="36" rx="2"/>
+        <text x="172" y="140" class="match-code">8強03</text>
+        <text x="172" y="153" class="match-team ph">b 籤（分組一抽）</text>
+        <text x="172" y="163" class="match-team ph">e 籤（分組一抽）</text>
+      </g>
+      <!-- 8強04：c vs f -->
+      <g>
+        <rect class="match" x="166" y="184" width="146" height="36" rx="2"/>
+        <text x="172" y="196" class="match-code">8強04</text>
+        <text x="172" y="209" class="match-team ph">c 籤（分組一抽）</text>
+        <text x="172" y="219" class="match-team ph">f 籤（籤分組二抽）</text>
+      </g>
 
-      <!-- 4強 (2 matches) -->
-      <g>
-        <rect class="match hot" x="320" y="40"  width="140" height="36" rx="2"/>
-        <text x="326" y="52" class="match-code">4強01</text>
-        <text x="326" y="65" class="match-team ph">8強01 勝</text>
-        <text x="326" y="75" class="match-team ph">8強04 勝</text>
-      </g>
-      <g>
-        <rect class="match hot" x="320" y="150" width="140" height="36" rx="2"/>
-        <text x="326" y="162" class="match-code">4強02</text>
-        <text x="326" y="175" class="match-team ph">8強02 勝</text>
-        <text x="326" y="185" class="match-team ph">8強03 勝</text>
-      </g>
-      <!-- 8強 → 4強 -->
-      <path class="line hot" d="M300 28 L310 28 L310 58 L320 58"/>
-      <path class="line hot" d="M300 198 L310 198 L310 58 L320 58" stroke-dasharray="0"/>
-      <path class="line hot" d="M300 78 L310 78 L310 168 L320 168"/>
-      <path class="line hot" d="M300 138 L310 138 L310 168 L320 168"/>
+      <!-- 10強 → 8強 connectors -->
+      <!-- 10強01勝 → 8強01 -->
+      <path class="line" d="M146 32 L156 32 L156 22 L166 22"/>
+      <!-- 10強02勝 → 8強02 -->
+      <path class="line" d="M146 86 L156 86 L156 76 L166 76"/>
 
-      <!-- Finals -->
+      <!-- ── 4強 (2 matches) ── -->
+      <!-- 4強01：8強01勝 vs 8強02勝 -->
       <g>
-        <rect class="match hot" x="480" y="15" width="150" height="36" rx="2"/>
-        <text x="486" y="27" class="match-code">冠軍賽</text>
-        <text x="486" y="40" class="match-team ph">4強01 勝</text>
-        <text x="486" y="50" class="match-team ph">4強02 勝</text>
+        <rect class="match hot" x="362" y="22" width="138" height="36" rx="2"/>
+        <text x="368" y="34" class="match-code">4強01</text>
+        <text x="368" y="47" class="match-team ph">8強01 勝</text>
+        <text x="368" y="57" class="match-team ph">8強02 勝</text>
+      </g>
+      <!-- 4強02：8強03勝 vs 8強04勝 -->
+      <g>
+        <rect class="match hot" x="362" y="154" width="138" height="36" rx="2"/>
+        <text x="368" y="166" class="match-code">4強02</text>
+        <text x="368" y="179" class="match-team ph">8強03 勝</text>
+        <text x="368" y="189" class="match-team ph">8強04 勝</text>
+      </g>
+
+      <!-- 8強 → 4強 connectors -->
+      <path class="line hot" d="M312 22 L337 22 L337 40 L362 40"/>
+      <path class="line hot" d="M312 76 L337 76 L337 40 L362 40"/>
+      <path class="line hot" d="M312 146 L337 146 L337 172 L362 172"/>
+      <path class="line hot" d="M312 202 L337 202 L337 172 L362 172"/>
+
+      <!-- ── Finals ── -->
+      <g>
+        <rect class="match hot" x="522" y="8" width="152" height="36" rx="2"/>
+        <text x="528" y="20" class="match-code">冠軍賽</text>
+        <text x="528" y="33" class="match-team ph">4強01 勝</text>
+        <text x="528" y="43" class="match-team ph">4強02 勝</text>
       </g>
       <g>
-        <rect class="match" x="480" y="175" width="150" height="36" rx="2"/>
-        <text x="486" y="187" class="match-code">季軍賽</text>
-        <text x="486" y="200" class="match-team ph">4強01 敗</text>
-        <text x="486" y="210" class="match-team ph">4強02 敗</text>
+        <rect class="match" x="522" y="184" width="152" height="36" rx="2"/>
+        <text x="528" y="196" class="match-code">季軍賽</text>
+        <text x="528" y="209" class="match-team ph">4強01 敗</text>
+        <text x="528" y="219" class="match-team ph">4強02 敗</text>
       </g>
-      <path class="line hot" d="M460 58 L470 58 L470 33 L480 33"/>
-      <path class="line hot" d="M460 168 L470 168 L470 33 L480 33"/>
-      <path class="line" d="M460 58 L470 58 L470 193 L480 193" stroke-dasharray="2 3"/>
-      <path class="line" d="M460 168 L470 168 L470 193 L480 193" stroke-dasharray="2 3"/>
+
+      <!-- 4強 → Finals connectors -->
+      <path class="line hot" d="M500 40 L511 40 L511 26 L522 26"/>
+      <path class="line hot" d="M500 172 L511 172 L511 26 L522 26"/>
+      <path class="line" d="M500 40 L511 40 L511 202 L522 202" stroke-dasharray="2 3"/>
+      <path class="line" d="M500 172 L511 172 L511 202 L522 202" stroke-dasharray="2 3"/>
     </svg>
   </div>
 
