@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>2026 清華夏季史學盃 · 賽程圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F4;
+    --ink:#1A1A1A;
+    --ink-2:#3A3A3A;
+    --muted:#6B6B6B;
+    --line:#E3DFD6;
+    --line-2:#CFC9BC;
+    --chip:#F1EDE3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#EDEAE2;font-family:"Noto Sans TC","Source Han Sans TC",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{padding:32px 0;display:flex;flex-direction:column;align-items:center;gap:28px}
+  .page{
+    width:210mm;height:297mm;background:var(--paper);
+    box-shadow:0 2px 4px rgba(0,0,0,.04),0 24px 60px -20px rgba(0,0,0,.18);
+    padding:14mm 14mm 12mm;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  /* ===== Header ===== */
+  .hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:4mm;border-bottom:1.2px solid var(--ink)}
+  .hdr .lt{display:flex;align-items:baseline;gap:10px;min-width:0;flex:1}
+  .event{margin-bottom:4px}
+  .meta{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .event{font-size:11px;color:var(--ink-2);letter-spacing:.18em;font-weight:500}
+  .sport{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;row-gap:6px;column-gap:16px}
+  .sport h1{font-size:44px;font-weight:900;letter-spacing:.02em;line-height:1;white-space:nowrap}
+  #p3 .sport h1, #p4 .sport h1{font-size:34px}
+  /* long titles: let en-subtitle wrap to a new line so it doesn't crowd */
+  #p3 .sport, #p4 .sport{flex-direction:column;align-items:flex-start;gap:4px}
+  .sport .en{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  .accent-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:10px;vertical-align:middle;transform:translateY(-3px)}
+  .pill{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--paper);background:var(--ink);padding:4px 8px;border-radius:2px;text-transform:uppercase}
+
+  /* ===== Section titles ===== */
+  .sect{display:flex;align-items:center;gap:10px;margin:7mm 0 3mm}
+  .sect .num{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--accent);font-weight:600;letter-spacing:.1em}
+  .sect h2{font-size:14px;font-weight:700;letter-spacing:.05em}
+  .sect .sub{margin-left:auto;font-size:12px;color:var(--ink-2);font-weight:600;letter-spacing:.04em}
+  .sect .bar{flex:1;height:1px;background:var(--line-2);margin:0 4px}
+
+  /* info row */
+  .info{display:flex;gap:18px;font-size:11px;color:var(--ink-2);margin-bottom:4mm;flex-wrap:wrap}
+  .info .k{color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-family:"JetBrains Mono",monospace;margin-right:5px}
+
+  /* ===== Schedule table ===== */
+  table.sched{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
+  table.sched th{
+    font-size:9px;font-weight:600;letter-spacing:.1em;color:var(--muted);
+    text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);
+    text-transform:uppercase;font-family:"JetBrains Mono",monospace;
+  }
+  table.sched td{padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+  table.sched tbody tr:last-child td{border-bottom:1.2px solid var(--ink)}
+  .court-a{background:color-mix(in oklab, var(--accent) 6%, transparent)}
+  .court-b{background:color-mix(in oklab, var(--accent) 2%, transparent)}
+  .col-time{width:13%;font-family:"JetBrains Mono",monospace;font-weight:500;color:var(--ink-2)}
+  .col-code{width:9%;font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.03em}
+  .col-team{width:19.5%}
+  .col-vs{width:5%;text-align:center;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:9px}
+  .away{color:var(--ink-2)}
+  .home{color:var(--ink);font-weight:500}
+  .tagA,.tagB{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.08em;padding:2px 5px;border-radius:2px;margin-right:4px;font-weight:600}
+  .tagA{color:var(--accent);border:1px solid color-mix(in oklab,var(--accent) 40%,transparent)}
+  .tagB{color:var(--ink-2);border:1px solid var(--line-2)}
+  .day-head{
+    display:flex;align-items:center;gap:10px;margin-top:3mm;margin-bottom:2mm;
+    padding:3px 0;
+  }
+  .day-head .date{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--ink);
+    background:var(--accent);color:var(--paper);padding:3px 8px;border-radius:2px;letter-spacing:.05em}
+  .day-head .venue{font-size:10px;color:var(--muted)}
+  .court-label{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.1em;color:var(--muted);padding:3px 6px 2px;text-transform:uppercase}
+  .court-a .court-label, .court-b .court-label{color:var(--accent)}
+
+  /* court header row */
+  .courts{display:grid;grid-template-columns:13% 43.5% 43.5%;gap:0;border-top:1.2px solid var(--ink);background:var(--paper)}
+  .courts > div{padding:5px 6px;font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;border-bottom:1px solid var(--line-2)}
+  .courts > div.ca{background:color-mix(in oklab, var(--accent) 10%, transparent);color:var(--accent);font-weight:600}
+  .courts > div.cb{background:color-mix(in oklab, var(--accent) 4%, transparent);color:var(--ink-2);font-weight:600}
+
+  /* Pair row layout */
+  table.sched2{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
+  table.sched2 col.t{width:13%}
+  table.sched2 col.c{width:8%}
+  table.sched2 col.g{width:17.75%}
+  table.sched2 col.x{width:4%}
+  table.sched2 col.g2{width:17.75%}
+  table.sched2 td{padding:5.5px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+  table.sched2 .tcell{font-family:"JetBrains Mono",monospace;font-weight:500;color:var(--ink-2)}
+  table.sched2 .ccell{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--muted)}
+  table.sched2 .vs{text-align:center;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:9px}
+  table.sched2 .away{color:var(--ink-2)}
+  table.sched2 .home{color:var(--ink);font-weight:500}
+  table.sched2 .sep-a{border-left:2px solid var(--accent)}
+  table.sched2 .sep-b{border-left:2px solid color-mix(in oklab,var(--accent) 45%, var(--line-2))}
+  /* Decisive matches emphasis — last two rows of softball day 2 (4強 + finals) */
+  #softball-d2 tr:nth-child(4) td,
+  #softball-d2 tr:nth-child(5) td{font-weight:700;color:#313131}
+  #softball-d2 tr:nth-child(4) td.ccell,
+  #softball-d2 tr:nth-child(5) td.ccell{color:var(--accent)}
+  /* All softball-d2 away/home text: darken to ink for readability of bracket placeholders */
+  #softball-d2 td.away,
+  #softball-d2 td.home{color:#313131;font-weight:500}
+
+  /* ===== Bracket ===== */
+  .bracket{position:relative;margin-top:3mm}
+  .bracket svg{display:block;width:100%;height:auto}
+  .match{fill:var(--paper);stroke:var(--line-2);stroke-width:1}
+  .match.hot{stroke:var(--accent);stroke-width:1.2}
+  .match-code{font-family:"JetBrains Mono",monospace;font-size:7px;fill:var(--muted);letter-spacing:.08em}
+  .match-team{font-size:8.5px;fill:var(--ink);font-family:"Noto Sans TC",sans-serif}
+  .match-team.ph{fill:var(--ink)}
+  .line{stroke:var(--line-2);stroke-width:1;fill:none}
+  .line.hot{stroke:var(--accent);stroke-width:1.2}
+  .rlabel{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;fill:var(--accent);text-transform:uppercase;font-weight:600}
+
+  /* Group list / round robin */
+  .groups{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+  .group{border:1px solid var(--line-2);border-radius:2px;padding:3mm 4mm}
+  .group .gh{display:flex;align-items:center;gap:8px;margin-bottom:2mm;padding-bottom:2mm;border-bottom:1px solid var(--line)}
+  .group .gh .gk{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--paper);background:var(--accent);padding:2px 7px;border-radius:2px;font-weight:700;letter-spacing:.08em}
+  .group .gh .gn{font-size:10px;color:var(--muted)}
+  .group ul{list-style:none}
+  .group li{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:11px;border-bottom:1px dashed var(--line)}
+  .group li:last-child{border-bottom:none}
+  .group li .code{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--accent);width:22px;font-weight:600}
+
+  /* Footer */
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;padding-top:4mm;border-top:1px solid var(--line-2);color:var(--muted);font-size:9px;font-family:"JetBrains Mono",monospace;letter-spacing:.08em}
+  .foot .notes{font-family:"Noto Sans TC",sans-serif;font-size:9.5px;color:var(--ink-2);letter-spacing:0;max-width:70%;line-height:1.5}
+  .foot .notes span{color:var(--accent);font-weight:600}
+
+  /* Corner mark */
+  .corner{position:absolute;top:0;left:0;width:0;height:0;border-top:18mm solid var(--accent);border-right:18mm solid transparent}
+  .corner-num{position:absolute;top:2.5mm;left:2.5mm;color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;z-index:2;letter-spacing:.05em}
+
+  /* ===== Screen nav ===== */
+  .topbar{position:fixed;top:0;left:0;right:0;background:rgba(250,248,244,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;gap:14px;align-items:center;z-index:50;font-size:12px}
+  .topbar .ttl{font-weight:700;letter-spacing:.04em}
+  .topbar a{color:var(--ink-2);text-decoration:none;padding:3px 10px;border-radius:2px;font-size:11px;letter-spacing:.05em}
+  .topbar a:hover{background:var(--chip)}
+  .topbar button{margin-left:auto;background:var(--ink);color:var(--paper);border:none;padding:6px 14px;font-size:11px;letter-spacing:.08em;cursor:pointer;border-radius:2px;font-family:inherit}
+  .topbar button:hover{opacity:.85}
+
+  body{padding-top:68px}
+
+  @media print {
+    html,body{margin:0!important;padding:0!important;background:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .topbar{display:none!important}
+    body{gap:0!important;padding-top:0!important}
+    .page{box-shadow:none!important;margin:0!important;width:210mm!important;height:297mm!important;page-break-after:always;break-after:page;break-inside:avoid;overflow:hidden}
+    .page:last-child{page-break-after:auto;break-after:auto}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{size:A4 portrait;margin:0}
+  }
+
+  /* per-sport color vars */
+  .sport-softball{--accent:oklch(0.58 0.14 145)}
+  .sport-basket  {--accent:oklch(0.62 0.15 45)}
+  .sport-mvb     {--accent:oklch(0.55 0.14 250)}
+  .sport-wvb     {--accent:oklch(0.58 0.12 350)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="ttl">2026 清華夏季史學盃 · 賽程圖</span>
+  <a href="#p1">壘球</a>
+  <a href="#p2">籃球</a>
+  <a href="#p3">男排</a>
+  <a href="#p4">女排</a>
+  <button onclick="window.print()">列印 / 存成 PDF</button>
+</div>
+
+<!-- ======================== PAGE 1 — 壘球 ======================== -->
+<section class="page sport-softball" id="p1" data-screen-label="01 壘球">
+  <div class="corner"></div><div class="corner-num">01</div>
+
+  <header class="hdr">
+    <div class="lt">
+      <div>
+        <div class="event">2026 清華夏季史學盃 · NTHU HISTORY CUP</div>
+        <div class="sport">
+          <h1><span class="accent-dot"></span>壘球</h1>
+          <span class="en">SOFTBALL / 5.9 – 5.10</span>
+        </div>
+      </div>
+    </div>
+    <span class="pill">10 TEAMS · 3 GROUPS</span>
+  </header>
+
+  <!-- Groups -->
+  <div class="sect">
+    <span class="num">01 /</span><h2>分組名單</h2>
+    <div class="bar"></div>
+    <span class="sub">GROUPS</span>
+  </div>
+  <div class="groups" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="group">
+      <div class="gh"><span class="gk">A</span><span class="gn">A 組 · 4 隊</span></div>
+      <ul>
+        <li><span class="code">A1</span>國立中興大學</li>
+        <li><span class="code">A2</span>國立清華大學</li>
+        <li><span class="code">A3</span>私立東海大學</li>
+        <li><span class="code">A4</span>國立東華大學</li>
+      </ul>
+    </div>
+    <div class="group">
+      <div class="gh"><span class="gk">B</span><span class="gn">B 組 · 3 隊</span></div>
+      <ul>
+        <li><span class="code">B1</span>國立政治大學</li>
+        <li><span class="code">B2</span>天主教輔仁大學</li>
+        <li><span class="code">B3</span>國立臺灣師範大學</li>
+      </ul>
+    </div>
+    <div class="group">
+      <div class="gh"><span class="gk">C</span><span class="gn">C 組 · 3 隊</span></div>
+      <ul>
+        <li><span class="code">C1</span>國立臺灣大學</li>
+        <li><span class="code">C2</span>國立臺北大學</li>
+        <li><span class="code">C3</span>國立中正大學</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 1 — group stage -->
+  <div class="sect">
+    <span class="num">02 /</span><h2>小組預賽　<span style="color:var(--muted);font-weight:400;font-family:JetBrains Mono,monospace;font-size:11px">5 / 09 SAT</span></h2>
+    <div class="bar"></div>
+    <span class="sub">竹北紅樹林慢壘球場</span>
+  </div>
+
+  <table class="sched2">
+    <colgroup><col class="t"><col class="c"><col class="g"><col class="x"><col class="g2"><col class="c"><col class="g"><col class="x"><col class="g2"></colgroup>
+    <thead>
+      <tr>
+        <th style="font-size:9px;letter-spacing:.1em;color:var(--muted);font-family:JetBrains Mono,monospace;font-weight:600;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase">時間</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--accent);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--accent);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 8%,transparent)">甲場地 · COURT A</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--ink-2);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 3%,transparent)">乙場地 · COURT B</th>
+      </tr>
+    </thead>
+    <tbody id="softball-d1"></tbody>
+  </table>
+
+  <!-- Day 2 — bracket -->
+  <div class="sect">
+    <span class="num">03 /</span><h2>決賽階段　<span style="color:var(--muted);font-weight:400;font-family:JetBrains Mono,monospace;font-size:11px">5 / 10 SUN</span></h2>
+    <div class="bar"></div>
+    <span class="sub">單淘汰 · 10強 → 冠軍</span>
+  </div>
+
+  <div class="bracket">
+    <svg viewBox="0 -14 680 244" preserveAspectRatio="xMidYMid meet">
+      <!-- Round labels -->
+      <text x="40"  y="-2" class="rlabel">10 強</text>
+      <text x="180" y="-2" class="rlabel">8 強</text>
+      <text x="330" y="-2" class="rlabel">4 強</text>
+      <text x="490" y="-2" class="rlabel">冠 / 季軍</text>
+
+      <!-- 10強 (2 matches) -->
+      <g class="m" data-x="10">
+        <rect class="match" x="10" y="30" width="130" height="36" rx="2"/>
+        <text x="16" y="42" class="match-code">預01 · 10強01</text>
+        <text x="16" y="55" class="match-team ph">A 組第四 (g)</text>
+        <text x="16" y="65" class="match-team ph">A 組第三 (h)</text>
+      </g>
+      <g class="m" data-x="10">
+        <rect class="match" x="10" y="160" width="130" height="36" rx="2"/>
+        <text x="16" y="172" class="match-code">預02 · 10強02</text>
+        <text x="16" y="185" class="match-team ph">A 組第四 vs</text>
+        <text x="16" y="195" class="match-team ph">A 組第三</text>
+      </g>
+
+      <!-- 8強 (4 matches) -->
+      <g>
+        <rect class="match" x="160" y="10"  width="140" height="36" rx="2"/>
+        <text x="166" y="22" class="match-code">8強01 · a vs d</text>
+        <text x="166" y="35" class="match-team ph">a　— B 組冠</text>
+        <text x="166" y="45" class="match-team ph">d　— C 組亞</text>
+      </g>
+      <g>
+        <rect class="match" x="160" y="60"  width="140" height="36" rx="2"/>
+        <text x="166" y="72" class="match-code">8強02 · b vs e</text>
+        <text x="166" y="85" class="match-team ph">b　— A 組冠</text>
+        <text x="166" y="95" class="match-team ph">e　— C 組冠</text>
+      </g>
+      <g>
+        <rect class="match" x="160" y="120" width="140" height="36" rx="2"/>
+        <text x="166" y="132" class="match-code">8強03 · c vs f</text>
+        <text x="166" y="145" class="match-team ph">c　— B 組亞</text>
+        <text x="166" y="155" class="match-team ph">f　— A 組亞</text>
+      </g>
+      <g>
+        <rect class="match" x="160" y="180" width="140" height="36" rx="2"/>
+        <text x="166" y="192" class="match-code">8強04</text>
+        <text x="166" y="205" class="match-team ph">10強01 勝</text>
+        <text x="166" y="215" class="match-team ph">10強02 勝</text>
+      </g>
+
+      <!-- connectors 10強 → 8強04 -->
+      <path class="line" d="M140 48 L150 48 L150 196 L160 196"/>
+      <path class="line" d="M140 178 L150 178 L150 196 L160 196"/>
+
+      <!-- 4強 (2 matches) -->
+      <g>
+        <rect class="match hot" x="320" y="40"  width="140" height="36" rx="2"/>
+        <text x="326" y="52" class="match-code">4強01</text>
+        <text x="326" y="65" class="match-team ph">8強01 勝</text>
+        <text x="326" y="75" class="match-team ph">8強04 勝</text>
+      </g>
+      <g>
+        <rect class="match hot" x="320" y="150" width="140" height="36" rx="2"/>
+        <text x="326" y="162" class="match-code">4強02</text>
+        <text x="326" y="175" class="match-team ph">8強02 勝</text>
+        <text x="326" y="185" class="match-team ph">8強03 勝</text>
+      </g>
+      <!-- 8強 → 4強 -->
+      <path class="line hot" d="M300 28 L310 28 L310 58 L320 58"/>
+      <path class="line hot" d="M300 198 L310 198 L310 58 L320 58" stroke-dasharray="0"/>
+      <path class="line hot" d="M300 78 L310 78 L310 168 L320 168"/>
+      <path class="line hot" d="M300 138 L310 138 L310 168 L320 168"/>
+
+      <!-- Finals -->
+      <g>
+        <rect class="match hot" x="480" y="15" width="150" height="36" rx="2"/>
+        <text x="486" y="27" class="match-code">冠軍賽</text>
+        <text x="486" y="40" class="match-team ph">4強01 勝</text>
+        <text x="486" y="50" class="match-team ph">4強02 勝</text>
+      </g>
+      <g>
+        <rect class="match" x="480" y="175" width="150" height="36" rx="2"/>
+        <text x="486" y="187" class="match-code">季軍賽</text>
+        <text x="486" y="200" class="match-team ph">4強01 敗</text>
+        <text x="486" y="210" class="match-team ph">4強02 敗</text>
+      </g>
+      <path class="line hot" d="M460 58 L470 58 L470 33 L480 33"/>
+      <path class="line hot" d="M460 168 L470 168 L470 33 L480 33"/>
+      <path class="line" d="M460 58 L470 58 L470 193 L480 193" stroke-dasharray="2 3"/>
+      <path class="line" d="M460 168 L470 168 L470 193 L480 193" stroke-dasharray="2 3"/>
+    </svg>
+  </div>
+
+  <div class="sect" style="margin-top:4mm">
+    <span class="num">04 /</span><h2>5 / 10 決賽日場次時刻</h2>
+    <div class="bar"></div>
+  </div>
+  <table class="sched2">
+    <colgroup><col class="t"><col class="c"><col class="g"><col class="x"><col class="g2"><col class="c"><col class="g"><col class="x"><col class="g2"></colgroup>
+    <tbody id="softball-d2"></tbody>
+  </table>
+
+  <div class="foot">
+    <div class="notes"><span>★</span> 四強賽後比賽時間為 70 分鐘，主客場由猜拳決定</div>
+    <div>2026 · NTHU HISTORY CUP · SOFTBALL</div>
+  </div>
+</section>
+
+<!-- ======================== PAGE 2 — 籃球 ======================== -->
+<section class="page sport-basket" id="p2" data-screen-label="02 籃球">
+  <div class="corner"></div><div class="corner-num">02</div>
+
+  <header class="hdr">
+    <div class="lt">
+      <div>
+        <div class="event">2026 清華夏季史學盃 · NTHU HISTORY CUP</div>
+        <div class="sport">
+          <h1><span class="accent-dot"></span>籃球</h1>
+          <span class="en">BASKETBALL / 5.16</span>
+        </div>
+      </div>
+    </div>
+    <span class="pill">8 TEAMS · 2 GROUPS</span>
+  </header>
+
+  <div class="sect">
+    <span class="num">01 /</span><h2>分組名單</h2><div class="bar"></div><span class="sub">GROUPS</span>
+  </div>
+  <div class="groups">
+    <div class="group">
+      <div class="gh"><span class="gk">A</span><span class="gn">A 組</span></div>
+      <ul>
+        <li><span class="code">A1</span>私立東吳大學</li>
+        <li><span class="code">A2</span>國立臺北大學</li>
+        <li><span class="code">A3</span>國立中興大學</li>
+        <li><span class="code">A4</span>國立臺灣大學</li>
+      </ul>
+    </div>
+    <div class="group">
+      <div class="gh"><span class="gk">B</span><span class="gn">B 組</span></div>
+      <ul>
+        <li><span class="code">B1</span>天主教輔仁大學</li>
+        <li><span class="code">B2</span>國立清華大學</li>
+        <li><span class="code">B3</span>國立臺灣師範大學</li>
+        <li><span class="code">B4</span>國立成功大學</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sect">
+    <span class="num">02 /</span><h2>當日賽程　<span style="color:var(--muted);font-weight:400;font-family:JetBrains Mono,monospace;font-size:11px">5 / 16 SAT</span></h2>
+    <div class="bar"></div>
+    <span class="sub">可利小棧三館</span>
+  </div>
+  <table class="sched2">
+    <colgroup><col class="t"><col class="c"><col class="g"><col class="x"><col class="g2"><col class="c"><col class="g"><col class="x"><col class="g2"></colgroup>
+    <thead>
+      <tr>
+        <th style="font-size:9px;letter-spacing:.1em;color:var(--muted);font-family:JetBrains Mono,monospace;font-weight:600;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase">時間</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--accent);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--accent);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 8%,transparent)">甲場地 · COURT A</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--ink-2);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 3%,transparent)">乙場地 · COURT B</th>
+      </tr>
+    </thead>
+    <tbody id="basket-d1"></tbody>
+  </table>
+
+  <div class="sect">
+    <span class="num">03 /</span><h2>淘汰賽結構</h2><div class="bar"></div>
+    <span class="sub">交叉對戰 · 冠/季軍</span>
+  </div>
+
+  <div class="bracket">
+    <svg viewBox="0 0 680 180" preserveAspectRatio="xMidYMid meet">
+      <text x="40"  y="14" class="rlabel">預賽名次</text>
+      <text x="240" y="14" class="rlabel">4 強</text>
+      <text x="470" y="14" class="rlabel">決賽</text>
+
+      <!-- Seeds -->
+      <g>
+        <rect class="match" x="10" y="30"  width="130" height="26" rx="2"/>
+        <text x="16" y="47" class="match-team">A 組冠軍</text>
+      </g>
+      <g>
+        <rect class="match" x="10" y="62"  width="130" height="26" rx="2"/>
+        <text x="16" y="79" class="match-team">B 組亞軍</text>
+      </g>
+      <g>
+        <rect class="match" x="10" y="110" width="130" height="26" rx="2"/>
+        <text x="16" y="127" class="match-team">B 組冠軍</text>
+      </g>
+      <g>
+        <rect class="match" x="10" y="142" width="130" height="26" rx="2"/>
+        <text x="16" y="159" class="match-team">A 組亞軍</text>
+      </g>
+
+      <!-- Semis -->
+      <g>
+        <rect class="match hot" x="220" y="35" width="150" height="42" rx="2"/>
+        <text x="226" y="48" class="match-code">4強01</text>
+        <text x="226" y="62" class="match-team">A 組冠</text>
+        <text x="226" y="72" class="match-team">B 組亞</text>
+      </g>
+      <g>
+        <rect class="match hot" x="220" y="115" width="150" height="42" rx="2"/>
+        <text x="226" y="128" class="match-code">4強02</text>
+        <text x="226" y="142" class="match-team">B 組冠</text>
+        <text x="226" y="152" class="match-team">A 組亞</text>
+      </g>
+
+      <path class="line" d="M140 43 L180 43 L180 56 L220 56"/>
+      <path class="line" d="M140 75 L180 75 L180 56 L220 56"/>
+      <path class="line" d="M140 123 L180 123 L180 136 L220 136"/>
+      <path class="line" d="M140 155 L180 155 L180 136 L220 136"/>
+
+      <!-- Final / 3rd -->
+      <g>
+        <rect class="match hot" x="450" y="25" width="170" height="44" rx="2"/>
+        <text x="456" y="40" class="match-code">冠軍賽</text>
+        <text x="456" y="55" class="match-team">4強01 勝</text>
+        <text x="456" y="65" class="match-team">4強02 勝</text>
+      </g>
+      <g>
+        <rect class="match" x="450" y="115" width="170" height="44" rx="2"/>
+        <text x="456" y="130" class="match-code">季軍賽</text>
+        <text x="456" y="145" class="match-team">4強01 敗</text>
+        <text x="456" y="155" class="match-team">4強02 敗</text>
+      </g>
+      <path class="line hot" d="M370 56 L410 56 L410 47 L450 47"/>
+      <path class="line hot" d="M370 136 L410 136 L410 47 L450 47"/>
+      <path class="line" stroke-dasharray="2 3" d="M370 56 L410 56 L410 137 L450 137"/>
+      <path class="line" stroke-dasharray="2 3" d="M370 136 L410 136 L410 137 L450 137"/>
+    </svg>
+  </div>
+
+  <div class="foot">
+    <div class="notes">共 <span>12</span> 場預賽 + <span>2</span> 場四強 + <span>2</span> 場決賽　·　單日完賽</div>
+    <div>2026 · NTHU HISTORY CUP · BASKETBALL</div>
+  </div>
+</section>
+
+<!-- ======================== PAGE 3 — 男排 ======================== -->
+<section class="page sport-mvb" id="p3" data-screen-label="03 男排">
+  <div class="corner"></div><div class="corner-num">03</div>
+
+  <header class="hdr">
+    <div class="lt">
+      <div>
+        <div class="event">2026 清華夏季史學盃 · NTHU HISTORY CUP</div>
+        <div class="sport">
+          <h1><span class="accent-dot"></span>男子排球</h1>
+          <span class="en">MEN'S VOLLEYBALL / 5.16 – 5.17</span>
+        </div>
+      </div>
+    </div>
+    <span class="pill">8 TEAMS · 2 GROUPS</span>
+  </header>
+
+  <div class="sect">
+    <span class="num">01 /</span><h2>分組名單</h2><div class="bar"></div><span class="sub">GROUPS</span>
+  </div>
+  <div class="groups">
+    <div class="group">
+      <div class="gh"><span class="gk">A</span><span class="gn">A 組</span></div>
+      <ul>
+        <li><span class="code">A1</span>國立成功大學</li>
+        <li><span class="code">A2</span>國立清華大學</li>
+        <li><span class="code">A3</span>國立臺灣師範大學</li>
+        <li><span class="code">A4</span>國立暨南國際大學</li>
+      </ul>
+    </div>
+    <div class="group">
+      <div class="gh"><span class="gk">B</span><span class="gn">B 組</span></div>
+      <ul>
+        <li><span class="code">B1</span>臺北市立大學</li>
+        <li><span class="code">B2</span>國立臺北大學</li>
+        <li><span class="code">B3</span>私立東海大學</li>
+        <li><span class="code">B4</span>國立政治大學</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sect">
+    <span class="num">02 /</span><h2>小組預賽　<span style="color:var(--muted);font-weight:400;font-family:JetBrains Mono,monospace;font-size:11px">5 / 16 SAT</span></h2>
+    <div class="bar"></div>
+    <span class="sub">可利小棧一館</span>
+  </div>
+  <table class="sched2">
+    <colgroup><col class="t"><col class="c"><col class="g"><col class="x"><col class="g2"><col class="c"><col class="g"><col class="x"><col class="g2"></colgroup>
+    <thead>
+      <tr>
+        <th style="font-size:9px;letter-spacing:.1em;color:var(--muted);font-family:JetBrains Mono,monospace;font-weight:600;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase">時間</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--accent);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--accent);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 8%,transparent)">甲場地 · COURT A</th>
+        <th colspan="4" style="font-size:9px;letter-spacing:.12em;color:var(--ink-2);font-family:JetBrains Mono,monospace;font-weight:700;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2);text-transform:uppercase;background:color-mix(in oklab,var(--accent) 3%,transparent)">乙場地 · COURT B</th>
+      </tr>
+    </thead>
+    <tbody id="mvb-d1"></tbody>
+  </table>
+
+  <div class="sect">
+    <span class="num">03 /</span><h2>決賽日　<span style="color:var(--muted);font-weight:400;font-family:JetBrains Mono,monospace;font-size:11px">5 / 17 SUN</span></h2>
+    <div class="bar"></div>
+    <span class="sub">可利小棧一館</span>
+  </div>
+  <table class="sched2">
+    <colgroup><col class="t"><col class="c"><col class="g"><col class="x"><col class="g2"><col class="c"><col class="g"><col class="x"><col class="g2"></colgroup>
+    <tbody id="mvb-d2"></tbody>
+  </table>
+
+  <div class="bracket" style="margin-top:2mm">
+    <svg viewBox="0 0 680 140" preserveAspectRatio="xMidYMid meet">
+      <text x="40"  y="14" class="rlabel">4 強</text>
+      <text x="420" y="14" class="rlabel">決賽</text>
+      <g>
+        <rect class="match hot" x="10" y="28" width="160" height="40" rx="2"/>
+        <text x="16" y="42" class="match-code">4強01</text>
+        <text x="16" y="56" class="match-team">A 組冠 vs B 組亞</text>
+      </g>
+      <g>
+        <rect class="match hot" x="10" y="82" width="160" height="40" rx="2"/>
+        <text x="16" y="96" class="match-code">4強02</text>
+        <text x="16" y="110" class="match-team">B 組冠 vs A 組亞</text>
+      </g>
+      <path class="line hot" d="M170 48 L260 48 L260 60 L400 60"/>
+      <path class="line hot" d="M170 102 L260 102 L260 60 L400 60"/>
+      <path class="line" stroke-dasharray="2 3" d="M170 48 L260 48 L260 95 L400 95"/>
+      <path class="line" stroke-dasharray="2 3" d="M170 102 L260 102 L260 95 L400 95"/>
+      <g>
+        <rect class="match hot" x="400" y="40" width="180" height="40" rx="2"/>
+        <text x="406" y="54" class="match-code">冠軍賽</text>
+        <text x="406" y="68" class="match-team">4強01 勝　vs　4強02 勝</text>
+      </g>
+      <g>
+        <rect class="match" x="400" y="85" width="180" height="40" rx="2"/>
+        <text x="406" y="99" class="match-code">季軍賽</text>
+        <text x="406" y="113" class="match-team">4強01 敗　vs　4強02 敗</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="foot">
+    <div class="notes">A 組冠軍 與 B 組冠軍 於決賽直接對決之機率取決於四強交叉勝負。</div>
+    <div>2026 · NTHU HISTORY CUP · MEN'S VOLLEYBALL</div>
+  </div>
+</section>
+
+<!-- ======================== PAGE 4 — 女排 ======================== -->
+<section class="page sport-wvb" id="p4" data-screen-label="04 女排">
+  <div class="corner"></div><div class="corner-num">04</div>
+
+  <header class="hdr">
+    <div class="lt">
+      <div>
+        <div class="event">2026 清華夏季史學盃 · NTHU HISTORY CUP</div>
+        <div class="sport">
+          <h1><span class="accent-dot"></span>女子排球</h1>
+          <span class="en">WOMEN'S VOLLEYBALL / 5.16 – 5.17</span>
+        </div>
+      </div>
+    </div>
+    <span class="pill">5 TEAMS · SINGLE ROUND ROBIN</span>
+  </header>
+
+  <div class="sect">
+    <span class="num">01 /</span><h2>參賽隊伍 · 單循環制</h2><div class="bar"></div><span class="sub">ROUND ROBIN</span>
+  </div>
+  <div class="groups" style="grid-template-columns:repeat(5, 1fr);gap:4mm">
+    <div class="group" style="padding:3mm">
+      <div class="gh" style="margin-bottom:1mm;padding-bottom:1mm"><span class="gk">A</span></div>
+      <div style="font-size:11px;line-height:1.4">國立臺灣大學</div>
+    </div>
+    <div class="group" style="padding:3mm">
+      <div class="gh" style="margin-bottom:1mm;padding-bottom:1mm"><span class="gk">B</span></div>
+      <div style="font-size:11px;line-height:1.4">國立清華大學</div>
+    </div>
+    <div class="group" style="padding:3mm">
+      <div class="gh" style="margin-bottom:1mm;padding-bottom:1mm"><span class="gk">C</span></div>
+      <div style="font-size:11px;line-height:1.4">國立臺北大學</div>
+    </div>
+    <div class="group" style="padding:3mm">
+      <div class="gh" style="margin-bottom:1mm;padding-bottom:1mm"><span class="gk">D</span></div>
+      <div style="font-size:11px;line-height:1.4">國立政治大學</div>
+    </div>
+    <div class="group" style="padding:3mm">
+      <div class="gh" style="margin-bottom:1mm;padding-bottom:1mm"><span class="gk">E</span></div>
+      <div style="font-size:11px;line-height:1.4">國立暨南國際大學</div>
+    </div>
+  </div>
+
+  <!-- Round robin matrix -->
+  <div class="sect">
+    <span class="num">02 /</span><h2>對戰矩陣</h2><div class="bar"></div>
+    <span class="sub">共 10 場 · 每隊 4 戰</span>
+  </div>
+  <div style="display:flex;gap:8mm;align-items:flex-start">
+    <div style="flex:0 0 auto">
+      <table style="border-collapse:collapse;font-size:12px">
+        <thead>
+          <tr>
+            <th style="width:46px;height:46px"></th>
+            <th style="width:46px;height:46px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:700;font-size:12px">A</th>
+            <th style="width:46px;height:46px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:700;font-size:12px">B</th>
+            <th style="width:46px;height:46px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:700;font-size:12px">C</th>
+            <th style="width:46px;height:46px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:700;font-size:12px">D</th>
+            <th style="width:46px;height:46px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:700;font-size:12px">E</th>
+          </tr>
+        </thead>
+        <tbody id="wvb-matrix"></tbody>
+      </table>
+      <div style="font-size:9px;color:var(--muted);margin-top:2mm;font-family:JetBrains Mono,monospace;letter-spacing:.05em">預 01 – 10 · TIME ORDER</div>
+    </div>
+    <div style="flex:1;padding-left:5mm;border-left:1px solid var(--line-2);align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:10px;color:var(--muted);margin-bottom:3mm;letter-spacing:.08em;font-family:JetBrains Mono,monospace">LEGEND</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;margin-bottom:8px">
+        <span style="width:26px;height:26px;background:var(--accent);color:var(--paper);display:inline-flex;align-items:center;justify-content:center;font-family:JetBrains Mono,monospace;font-size:11px;font-weight:700;border-radius:3px">01</span>
+        <span>場次編號</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.8;margin-top:3mm">
+        <div>· 5 場於 <strong>5/16 下午</strong></div>
+        <div>· 5 場於 <strong>5/17 上午</strong></div>
+        <div>· 每隊對其他四隊各比一次</div>
+        <div>· 由總勝場數決定名次</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day tables -->
+  <div class="sect">
+    <span class="num">03 /</span><h2>完整賽程</h2><div class="bar"></div>
+    <span class="sub">可利小棧一館</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5mm">
+    <div>
+      <div class="day-head"><span class="date">5 / 16　SAT</span><span class="venue">下半場</span></div>
+      <table style="width:100%;border-collapse:collapse;font-size:10.5px">
+        <thead><tr>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">時間</th>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">場次</th>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">對戰</th>
+        </tr></thead>
+        <tbody id="wvb-fri"></tbody>
+      </table>
+    </div>
+    <div>
+      <div class="day-head"><span class="date">5 / 17　SUN</span><span class="venue">上半場</span></div>
+      <table style="width:100%;border-collapse:collapse;font-size:10.5px">
+        <thead><tr>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">時間</th>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">場次</th>
+          <th style="text-align:left;padding:4px;border-bottom:1px solid var(--line-2);font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:.1em">對戰</th>
+        </tr></thead>
+        <tbody id="wvb-sat"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="notes">5 隊單循環 · 共 <span>10</span> 場 · 5/16 & 5/17 平均分日進行</div>
+    <div>2026 · NTHU HISTORY CUP · WOMEN'S VOLLEYBALL</div>
+  </div>
+</section>
+
+<script>
+// ============ Data + render ============
+
+function T(excelTime){
+  // Excel fraction of day → HH:MM
+  const mins = Math.round(excelTime * 24 * 60);
+  const h = Math.floor(mins/60), m = mins%60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+function row(t, codeA, awayA, homeA, codeB, awayB, homeB){
+  return `<tr>
+    <td class="tcell">${T(t)}</td>
+    <td class="ccell sep-a">${codeA}</td>
+    <td class="away">${awayA||''}</td>
+    <td class="vs">vs</td>
+    <td class="home">${homeA||''}</td>
+    <td class="ccell sep-b">${codeB||''}</td>
+    <td class="away">${awayB||''}</td>
+    <td class="vs">${codeB?'vs':''}</td>
+    <td class="home">${homeB||''}</td>
+  </tr>`;
+}
+
+// Softball Day 1
+document.getElementById('softball-d1').innerHTML = [
+  row(0.4167,'預01','A1 中興大學','A2 清華大學','預02','B1 政治大學','B2 輔仁大學'),
+  row(0.4722,'預03','A3 東海大學','A4 東華大學','預04','C1 臺灣大學','C2 臺北大學'),
+  row(0.5278,'預05','A1 中興大學','A3 東海大學','預06','B2 輔仁大學','B3 師範大學'),
+  row(0.5833,'預07','A2 清華大學','A4 東華大學','預08','C2 臺北大學','C3 中正大學'),
+  row(0.6389,'預09','A4 東華大學','A1 中興大學','預10','B3 師範大學','B1 政治大學'),
+  row(0.6944,'預11','A2 清華大學','A3 東海大學','預12','C3 中正大學','C1 臺灣大學'),
+].join('');
+
+// Softball Day 2
+document.getElementById('softball-d2').innerHTML = [
+  row(0.4167,'10強01','A 組第四','g','10強02','A 組第三','h'),
+  row(0.4722,'8強01','a','d','8強02','b','e'),
+  row(0.5278,'8強03','c','f','8強04','10強01 勝','10強02 勝'),
+  row(0.5833,'4強01','8強01 勝','8強04 勝','4強02','8強02 勝','8強03 勝'),
+  row(0.6528,'冠軍賽','4強01 勝','4強02 勝','季軍賽','4強01 敗','4強02 敗'),
+].join('');
+
+// Basketball
+document.getElementById('basket-d1').innerHTML = [
+  row(0.375, '預01','A1 東吳大學','A2 臺北大學','預02','B1 輔仁大學','B2 清華大學'),
+  row(0.4167,'預03','A3 中興大學','A4 臺灣大學','預04','B3 師範大學','B4 成功大學'),
+  row(0.4583,'預05','A1 東吳大學','A3 中興大學','預06','B1 輔仁大學','B3 師範大學'),
+  row(0.5,   '預07','A2 臺北大學','A4 臺灣大學','預08','B2 清華大學','B4 成功大學'),
+  row(0.5417,'預09','A1 東吳大學','A4 臺灣大學','預10','B1 輔仁大學','B4 成功大學'),
+  row(0.5833,'預11','A2 臺北大學','A3 中興大學','預12','B2 清華大學','B3 師範大學'),
+  row(0.625, '4強01','A 組冠','B 組亞','4強02','B 組冠','A 組亞'),
+  row(0.6667,'冠軍賽','4強01 勝','4強02 勝','季軍賽','4強01 敗','4強02 敗'),
+].join('');
+
+// Men's volleyball Day 1
+document.getElementById('mvb-d1').innerHTML = [
+  row(0.375, '預01','A1 成功大學','A2 清華大學','預02','A3 師範大學','A4 暨南大學'),
+  row(0.4167,'預03','B1 北市大','B2 臺北大學','預04','B3 東海大學','B4 政治大學'),
+  row(0.4583,'預05','A1 成功大學','A3 師範大學','預06','A2 清華大學','A4 暨南大學'),
+  row(0.5,   '預07','B1 北市大','B3 東海大學','預08','B2 臺北大學','B4 政治大學'),
+  row(0.5417,'預09','A1 成功大學','A4 暨南大學','預10','A2 清華大學','A3 師範大學'),
+  row(0.5833,'預11','B1 北市大','B4 政治大學','預12','B2 臺北大學','B3 東海大學'),
+].join('');
+
+// Men's volleyball Day 2
+document.getElementById('mvb-d2').innerHTML = [
+  row(0.5,   '4強01','A 組冠','B 組亞','4強02','B 組冠','A 組亞'),
+  row(0.5417,'冠軍賽','4強01 勝','4強02 勝','季軍賽','4強01 敗','4強02 敗'),
+].join('');
+
+// Women's volleyball — round robin matrix
+const wvbMatches = [
+  // [away, home, code, time, day]
+  ['A','B','預01',0.625,  'D1'],
+  ['C','D','預02',0.625,  'D1'],
+  ['A','C','預03',0.6667, 'D1'],
+  ['B','E','預04',0.6667, 'D1'],
+  ['A','E','預05',0.375,  'D2'],
+  ['B','D','預06',0.375,  'D2'],
+  ['A','D','預07',0.4167, 'D2'],
+  ['C','E','預08',0.4167, 'D2'],
+  ['B','C','預09',0.4583, 'D2'],
+  ['D','E','預10',0.4583, 'D2'],
+];
+const pairMap = {}; // 'A-B' -> code
+wvbMatches.forEach(m => {
+  const k = [m[0],m[1]].sort().join('-');
+  pairMap[k] = m[2];
+});
+const wvbTeams = ['A','B','C','D','E'];
+const wvbNames = {A:'臺灣大學',B:'清華大學',C:'臺北大學',D:'政治大學',E:'暨南大學'};
+let matrixHtml = '';
+for (const r of wvbTeams){
+  matrixHtml += `<tr>
+    <th style="width:34px;height:34px;font-family:JetBrains Mono,monospace;color:var(--muted);font-weight:600;border-right:1px solid var(--line-2)">${r}</th>`;
+  for (const c of wvbTeams){
+    if (r === c) {
+      matrixHtml += `<td style="width:46px;height:46px;background:var(--chip);border:1px solid var(--line);text-align:center;color:var(--muted);font-size:16px">×</td>`;
+    } else {
+      const k = [r,c].sort().join('-');
+      const code = pairMap[k];
+      const num = code.replace('預','');
+      matrixHtml += `<td style="width:46px;height:46px;border:1px solid var(--line);text-align:center;padding:0">
+        <div style="background:var(--accent);color:var(--paper);width:30px;height:30px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-family:JetBrains Mono,monospace;font-size:11px;font-weight:700;border-radius:3px">${num}</div>
+      </td>`;
+    }
+  }
+  matrixHtml += `</tr>`;
+}
+document.getElementById('wvb-matrix').innerHTML = matrixHtml;
+
+// Day tables for W vb
+function wvbRow(m){
+  const teamName = x => `${x} ${wvbNames[x]}`;
+  return `<tr>
+    <td style="padding:5px 4px;border-bottom:1px dashed var(--line);font-family:JetBrains Mono,monospace;color:var(--ink-2)">${T(m[3])}</td>
+    <td style="padding:5px 4px;border-bottom:1px dashed var(--line);font-family:JetBrains Mono,monospace;color:var(--accent);font-weight:600">${m[2]}</td>
+    <td style="padding:5px 4px;border-bottom:1px dashed var(--line)">${teamName(m[0])} <span style="color:var(--muted);font-family:JetBrains Mono,monospace;font-size:9px">vs</span> ${teamName(m[1])}</td>
+  </tr>`;
+}
+document.getElementById('wvb-fri').innerHTML = wvbMatches.filter(m => m[4]==='D1').map(wvbRow).join('');
+document.getElementById('wvb-sat').innerHTML = wvbMatches.filter(m => m[4]==='D2').map(wvbRow).join('');
+</script>
+
+
+<script>
+(async () => {
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e){}
+  await new Promise(r => setTimeout(r, 500));
+  window.print();
+})();
+</script>
+</body>
+</html>
